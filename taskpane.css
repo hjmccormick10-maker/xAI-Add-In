@@ -1,0 +1,412 @@
+/* taskpane.css */
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 5px; /* Reduced from 10px to minimize width */
+    padding: 5px; /* Reduced from 10px to minimize width */
+    background-color: #F5F7FA; /* Light gray */
+    color: #1A3C5A; /* Dark blue */
+    overflow-x: hidden; /* Prevent right spillover */
+    position: relative; /* Allow leftward expansion */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 100%; /* Fit within task pane�s available width */
+    width: auto; /* Replace fixed 400px to adapt dynamically */
+    height: 600px; /* Retained */
+    box-sizing: border-box; /* Ensure padding/margin included */
+    overflow-y: auto; /* Allow scrolling */
+}
+#container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%; /* Dynamic width */
+    max-width: 100%; /* Prevent right spillover */
+    min-width: 250px; /* Minimum usability */
+    box-sizing: border-box;
+    position: relative; /* Ensure container is not obscured by modals */
+    z-index: 10; /* Keep above modal overlays */
+}
+
+h2 {
+    font-size: 16px;
+    margin: 10px 0 5px;
+    color: #1A3C5A; /* Dark blue */
+}
+
+h3 {
+    font-size: 16px;
+    margin: 0 0 10px;
+    color: #1A3C5A; /* Dark blue */
+}
+
+#apiSettings {
+    margin-bottom: 2px; /* Added August 5, 2025: Reduced margin for API Settings label */
+}
+
+#modelName {
+    font-weight: bold;
+    color: #00A67E; /* Green accent */
+}
+
+textarea {
+    width: 100%;
+    max-width: 100%; /* Prevent right spillover */
+    box-sizing: border-box;
+    padding: 8px;
+    font-size: 14px;
+    background-color: #FFFFFF; /* White */
+    border: 1px solid #4A90E2; /* Blue border */
+    border-radius: 4px;
+    overflow-wrap: break-word; /* Wrap long text */
+    white-space: pre-wrap; /* Preserve formatting */
+    resize: both; /* Fallback for IE11 */
+    display: block !important; /* Force visibility */
+    visibility: visible !important; /* Prevent modal hiding */
+    z-index: 10; /* Ensure above modal overlays */
+}
+
+#responseBox {
+    min-height: 100px; /* Specific for responseBox */
+}
+
+#questionBox {
+    min-height: 60px; /* Specific for questionBox */
+}
+
+.button-group {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    flex-wrap: wrap; /* Wrap buttons if task pane is narrow */
+}
+
+button {
+    padding: 6px;
+    font-size: 10.5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    color: #FFFFFF; /* White text */
+    flex: 1; /* Equal width for buttons */
+    min-width: 80px; /* Minimum button width */
+    display: block !important; /* Force visibility */
+    box-sizing: border-box;
+    transition: background-color 0.2s; /* Smooth hover effect */
+}
+
+#submitButton, #insertButton, #insertSnippetButton {
+    background-color: #0057B8; /* Blue */
+}
+
+#enterApiKeyButton, #enterModelButton {
+    background-color: #0057B8; /* Blue */
+    flex: none; /* Prevent stretching */
+    min-width: 60px; /* Smaller minimum width */
+}
+
+#configureChatButton {
+    background-color: #00A67E; /* Green */
+}
+
+    #submitButton:hover, #insertButton:hover, #insertSnippetButton:hover,
+    #enterApiKeyButton:hover, #enterModelButton:hover, #configureChatButton:hover {
+        background-color: #4A90E2; /* Lighter blue */
+    }
+
+#submitButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#cancelButton, #discardButton {
+    background-color: #D32F2F; /* Red */
+}
+
+    #cancelButton:hover, #discardButton:hover {
+        background-color: #EF5350; /* Lighter red */
+    }
+
+.settings-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap; /* Wrap for narrow task panes */
+    margin-bottom: 10px; /* Space for tokenDisplay */
+}
+
+#tokenDisplay {
+    font-size: 12px;
+    background-color: #E8ECEF; /* Light grey, matches #F5F7FA theme */
+    padding: 6px;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="radio"] {
+    margin-left: 8px;
+}
+
+input[type="text"], input[type="password"], #styleInput {
+    width: 100%;
+    max-width: 100%; /* Prevent spillover */
+    padding: 8px;
+    font-size: 14px;
+    background-color: #FFFFFF; /* White */
+    border: 1px solid #4A90E2; /* Blue border */
+    border-radius: 4px;
+}
+
+    input[type="text"]#styleInput:disabled {
+        background-color: #E8ECEF; /* Modified August 5, 2025: Light gray to indicate non-editable */
+        opacity: 0.7; /* Retained from previous requirement */
+        border: 1px solid #B0BEC5; /* Gray border to enhance disabled look */
+        cursor: not-allowed; /* Indicate non-editable */
+    }
+
+/* Added August 4, 2025: Style group for input and button */
+.style-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Modified August 4, 2025: Reduce input width to accommodate button */
+input[type="text"]#styleInput {
+    width: 60%; /* Reduced width */
+    max-width: 60%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #4A90E2; /* Blue border */
+    border-radius: 4px;
+}
+
+/* Added August 4, 2025: Style for change style button */
+#changeStyleButton {
+    padding: 6px; /* Matches existing buttons */
+    font-size: 10.5px; /* Matches existing buttons */
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    color: #FFFFFF; /* White text */
+    background-color: #00A67E; /* Green, matches #configureChatButton */
+    flex: 1;
+    min-width: 80px; /* Matches existing buttons */
+    box-sizing: border-box;
+    transition: background-color 0.2s;
+}
+
+    #changeStyleButton:hover {
+        background-color: #4A90E2; /* Lighter blue, matches other buttons */
+    }
+
+/* Add margin-top to push buttons down */
+.modal-button-group {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px; /* Added to create gap above buttons */
+}
+
+/* Added August 4, 2025: Style modal */
+#styleModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: none;
+}
+
+    #styleModal > div {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Matches other modals */
+    }
+
+        #styleModal > div > div {
+            background: #FFFFFF;
+            padding: 16px; /* Changed from 8px to 16px for more internal space */
+            margin: 20px auto;
+            width: 250px;
+            max-width: 250px;
+            min-width: 200px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #4A90E2;
+        }
+
+    #styleModal h3 {
+        font-size: 16px; /* Matches other modals */
+        margin: 0 0 10px;
+        color: #1A3C5A; /* Matches other modals */
+    }
+
+    #styleModal input[type="text"] {
+        width: 100%;
+        max-width: 100%;
+        padding: 8px;
+        font-size: 14px;
+        background-color: #FFFFFF;
+        border: 1px solid #4A90E2;
+        border-radius: 4px;
+        margin-bottom: 20px; /* Increased from 12px */
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    #styleModal button {
+        padding: 6px; /* Matches other modal buttons */
+        font-size: 10.5px; /* Matches other modal buttons */
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+        color: #FFFFFF;
+        min-width: 80px; /* Matches other modal buttons */
+    }
+
+    #styleModal #saveStyleButton {
+        background-color: #00A67E; /* Green, matches #saveApiKeyButton */
+    }
+
+        #styleModal #saveStyleButton:hover {
+            background-color: #26C6DA; /* Lighter green, matches other save buttons */
+        }
+
+    #styleModal #cancelStyleButton {
+        background-color: #D32F2F; /* Red, matches #cancelApiKeyButton */
+    }
+
+        #styleModal #cancelStyleButton:hover {
+            background-color: #EF5350; /* Lighter red, matches other cancel buttons */
+        }
+
+select {
+    padding: 8px;
+    font-size: 14px;
+    background-color: #FFFFFF; /* White */
+    border: 1px solid #4A90E2; /* Blue border */
+    border-radius: 4px;
+    width: 100%; /* Full width */
+    max-width: 100%; /* Prevent spillover */
+}
+
+#statusMessage {
+    margin: 15px 0; /* Increased spacing */
+    font-size: 14px; /* Modified August 5, 2025: Reduced font size */
+    font-style: italic;
+    color: #3C3866;
+}
+
+    #statusMessage.success {
+        color: #1A3C5A; /* Dark blue, matches h2 */
+    }
+
+    #statusMessage.error {
+        color: #D32F2F; /* Red, matches cancel/discard */
+    }
+
+/* Modal styles for API key, model, and chat config */
+#apiKeyModal, #modelModal, #chatConfigModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: none;
+}
+
+    #apiKeyModal > div, #modelModal > div, #chatConfigModal > div {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    }
+
+        #apiKeyModal > div > div, #modelModal > div > div, #chatConfigModal > div > div {
+            background: #FFFFFF; /* White background */
+            padding: 8px;
+            margin: 20px auto; /* Modified August 5, 2025: Centered horizontally */
+            width: 250px; /* Fixed width for consistency */
+            max-width: 250px; /* Reduced to fit task pane */
+            min-width: 200px; /* For narrower task panes */
+            box-sizing: border-box;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #4A90E2; /* Visible border */
+        }
+
+    #apiKeyModal h3, #modelModal h3, #chatConfigModal h3 {
+        font-size: 16px;
+        margin: 0 0 10px; /* Modified August 5, 2025: Consistent spacing */
+        color: #1A3C5A; /* Dark blue */
+    }
+
+    #apiKeyModal input[type="password"], #apiKeyModal input[type="text"],
+    #modelModal input[type="text"], #chatConfigModal input[type="text"],
+    #chatConfigModal textarea {
+        width: 100%;
+        max-width: 100%;
+        padding: 8px;
+        font-size: 14px;
+        background-color: #FFFFFF;
+        border: 1px solid #4A90E2; /* Blue border */
+        border-radius: 4px;
+        margin-bottom: 12px; /* Modified August 5, 2025: Increased spacing */
+        overflow-x: auto; /* Allow scrolling for long input */
+        white-space: nowrap; /* Prevent wrapping */
+    }
+
+    #apiKeyModal label, #modelModal label, #chatConfigModal label {
+        font-size: 14px;
+        color: #1A3C5A; /* Dark blue */
+        margin: 10px 0 0; /* Modified August 5, 2025: Added top margin for spacing */
+        display: block; /* Ensure labels stack properly */
+    }
+
+    #apiKeyModal button, #modelModal button, #chatConfigModal button {
+        padding: 6px;
+        font-size: 10.5px;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+        color: #FFFFFF;
+        min-width: 80px;
+    }
+
+    #apiKeyModal #saveApiKeyButton, #modelModal #saveModelButton, #chatConfigModal #saveChatConfigButton {
+        background-color: #00A67E; /* Green */
+    }
+
+        #apiKeyModal #saveApiKeyButton:hover, #modelModal #saveModelButton:hover, #chatConfigModal #saveChatConfigButton:hover {
+            background-color: #26C6DA; /* Lighter green */
+        }
+
+    #apiKeyModal #cancelApiKeyButton, #modelModal #cancelModelButton, #chatConfigModal #cancelChatConfigButton {
+        background-color: #D32F2F; /* Red */
+    }
+
+        #apiKeyModal #cancelApiKeyButton:hover, #modelModal #cancelModelButton:hover, #chatConfigModal #cancelChatConfigButton:hover {
+            background-color: #EF5350; /* Lighter red */
+        }
+
+
+/*# sourceMappingURL=taskpane.css.map*/
