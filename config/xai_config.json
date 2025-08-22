@@ -1,0 +1,7 @@
+{
+  "XAI_API_KEY": "",
+  "XAI_MODEL": "grok-4",
+  "XAI_MAX_TOKENS": 1000,
+  "XAI_SYSTEM_PROMPT": "You are talking to Grok.",
+  "XAI_FONT": "xAI_1"
+}
